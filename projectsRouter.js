@@ -1,7 +1,6 @@
 const express = require("express");
 
 const Projects = require("./data/helpers/projectModel");
-const Actions = require("./data/helpers/actionModel");
 
 const router = express.Router();
 
@@ -52,7 +51,7 @@ router.get("/:id/actions", (req, res) => {
     });
 });
 
-// POST operations (2)
+// POST operations (1)
 router.post("/", (req, res) => {
   const newProject = req.body;
   //   const requiredValues = req.body.name && req.body.description
@@ -71,30 +70,7 @@ router.post("/", (req, res) => {
   }
 });
 
-//! Not working, goes to default server 404
-router.post("/id/actions", (req, res) => {
-  const newAction = req.body;
-  if (
-    !req.body.description ||
-    Object.values(req.body.description).length > 128
-  ) {
-    res.status(400).json({
-      message: "Description is required and must be less than 128 characters",
-    });
-  } else if (!req.body.notes) {
-    res.status(400).json({ message: "Notes are required" });
-  } else {
-    Actions.insert(newAction)
-      .then((newAction) => {
-        res.status(200).json({ message: "Action created", newAction });
-      })
-      .catch((error) => {
-        res.status(500).json({ error, message: "Server broke" });
-      });
-  }
-});
-
-// DELETE operations (2)
+// DELETE operations (1)
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
   Projects.remove(id)
@@ -110,12 +86,7 @@ router.delete("/:id", (req, res) => {
     .catch((error) => res.status(500).json({ error, message: "Server broke" }));
 });
 
-//! COME BACK TO THIS
-router.delete("/:id/actions/:id", (req, res) => {
-  const id = req.params.id;
-});
-
-// PUT operations ()
+// PUT operations (1)
 router.put("/:id", (req, res) => {
   const id = req.params.id;
   const editProject = req.body;
