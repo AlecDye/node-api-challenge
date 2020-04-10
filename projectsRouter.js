@@ -116,5 +116,20 @@ router.delete("/:id/actions/:id", (req, res) => {
 });
 
 // PUT operations ()
+router.put("/:id", (req, res) => {
+  const id = req.params.id;
+  const editProject = req.body;
+  if (!editProject.name || !editProject.description) {
+    res.status(400).json({ message: "Name & Description are required" });
+  } else {
+    Projects.update(id, editProject)
+      .then((project) => {
+        res.status(200).json({ message: "Project updated", project });
+      })
+      .catch((error) => {
+        res.status(500).json({ error, message: "Server broke" });
+      });
+  }
+});
 
 module.exports = router;
