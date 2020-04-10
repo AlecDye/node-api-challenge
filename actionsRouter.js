@@ -7,19 +7,16 @@ const router = express.Router();
 // CRUD operations
 
 // GET action (to get a list of actions use the project-actions endpoint)
+router.get("/:id/actions/:id", (req, res) => {});
 // POST actions
-//! Not working, goes to default server 404
-router.post("/id/actions", (req, res) => {
+//? validation working
+//! 500 error
+router.post("/:id/actions", (req, res) => {
   const newAction = req.body;
-  if (
-    !req.body.description ||
-    Object.values(req.body.description).length > 128
-  ) {
+  if (!newAction.description || !newAction.notes) {
     res.status(400).json({
-      message: "Description is required and must be less than 128 characters",
+      message: "Description & notes are required",
     });
-  } else if (!req.body.notes) {
-    res.status(400).json({ message: "Notes are required" });
   } else {
     Actions.insert(newAction)
       .then((newAction) => {
@@ -36,5 +33,6 @@ router.delete("/:id/actions/:id", (req, res) => {
   const id = req.params.id;
 });
 // PUT actions
+router.put("/:id/actions/:id", (req, res) => {});
 
 module.exports = router;
