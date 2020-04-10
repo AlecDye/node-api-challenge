@@ -39,7 +39,6 @@ router.post("/:id/actions", (req, res) => {
   }
 });
 // DELETE actions
-//! COME BACK TO THIS
 router.delete("/:id/actions/:id", (req, res) => {
   const id = req.params.id;
   Actions.remove(id)
@@ -47,11 +46,9 @@ router.delete("/:id/actions/:id", (req, res) => {
       if (count > 0) {
         res.status(200).json({ message: "Action deleted" });
       } else {
-        res
-          .status(404)
-          .json({
-            message: "Action not found. You may have deleted it already",
-          });
+        res.status(404).json({
+          message: "Action not found. You may have deleted it already",
+        });
       }
     })
     .catch((error) => {

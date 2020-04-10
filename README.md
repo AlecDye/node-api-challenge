@@ -38,15 +38,26 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
-- [ ] Mention two parts of Express that you learned about this week.
+- [x] Mention two parts of Express that you learned about this week.
 
-- [ ] Describe Middleware?
+- Express is a backend framework that makes working with Node.js easier
+- Express is also lightweight and only provides essential utilities while giving you room to add your preferred middleware
 
-- [ ] Describe a Resource?
+- [x] Describe Middleware?
 
-- [ ] What can the API return to help clients know if a request was successful?
+- Middleware sits between requests and responses and can moniter these operations (such as a logger) or intercept, stop, and run functions (validation)
 
-- [ ] How can we partition our application into sub-applications?
+- [x] Describe a Resource?
+
+- Any content that lives on the backend server (think like an object in OOP, everything is an object so everything on a server is a resource)
+
+- [x] What can the API return to help clients know if a request was successful?
+
+- Http status codes
+
+- [x] How can we partition our application into sub-applications?
+
+- By using routers we can compartmentalize and organize our data structure into manageable folders
 
 ## Minimum Viable Product
 
@@ -55,8 +66,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 Design and build the necessary endpoints to:
 
-- [ ] Perform CRUD operations on _projects_ and _actions_. When adding an action, make sure the `project_id` provided belongs to an existing `project`. If you try to add an action with an `id` of 3 and there is no project with that `id` the database will return an error.
-- [ ] Retrieve the list of actions for a project.
+- [x] Perform CRUD operations on _projects_ and _actions_. When adding an action, make sure the `project_id` provided belongs to an existing `project`. If you try to add an action with an `id` of 3 and there is no project with that `id` the database will return an error.
+- [x] Retrieve the list of actions for a project.
 
 Please read the following sections before implementing the Minimum Viable Product, they describe how the database is structured and the files and methods available for interacting with the data.
 
