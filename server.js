@@ -12,4 +12,8 @@ server.use(express.json());
 
 server.use("/api/projects", projectsRouter);
 
+server.use(function (req, res) {
+  res.status(404).send("Page not found!");
+});
+
 module.exports = server;
